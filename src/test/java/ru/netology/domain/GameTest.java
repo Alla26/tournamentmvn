@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class GameTest {
@@ -21,11 +22,11 @@ public class GameTest {
     public void shouldRegisteredPlayer() {
 
 
-        List<Player> expected = new ArrayList<>();
+        HashMap<String, Integer> expected = new HashMap<>();
 
-        expected.add(player3);
+        expected.put(player3.getName(), player3.getStrength());
 
-        ArrayList actual = game.register(player3);
+        HashMap actual = game.register(player3);
 
         Assertions.assertEquals(actual, expected);
     }
@@ -33,7 +34,8 @@ public class GameTest {
     @Test
     public void shouldChooseWinnerFirst() {
 
-        List<Player> players = new ArrayList<>();
+        HashMap<String, Integer> players = new HashMap<>();
+
         game.register(player1);
         game.register(player3);
 
@@ -48,7 +50,7 @@ public class GameTest {
     @Test
     public void shouldChooseWinnerSecond() {
 
-        List<Player> players = new ArrayList<>();
+        HashMap<String, Integer> players = new HashMap<>();
         game.register(player1);
         game.register(player2);
 
@@ -63,14 +65,14 @@ public class GameTest {
     @Test
     public void shouldShowDraw() {
 
-        List<Player> players = new ArrayList<>();
+        HashMap<String, Integer> players = new HashMap<>();
         game.register(player2);
         game.register(player4);
 
 
-        int expected = 0;
+        Integer expected = 0;
 
-        int actual = game.round("Игрок2", "Игрок4");
+        Integer actual = game.round("Игрок2", "Игрок4");
 
         Assertions.assertEquals(expected, actual);
     }
@@ -78,7 +80,7 @@ public class GameTest {
     @Test
     public void shouldThrowExceptionFirstNotRegistered() {
 
-        List<Player> players = new ArrayList<>();
+        HashMap<String, Integer> players = new HashMap<>();
         game.register(player4);
 
         Assertions.assertThrows(NotRegisteredException.class, () -> {
@@ -90,7 +92,7 @@ public class GameTest {
     @Test
     public void shouldThrowExceptionSecondNotRegistered() {
 
-        List<Player> players = new ArrayList<>();
+        HashMap<String, Integer> players = new HashMap<>();
         game.register(player3);
 
         Assertions.assertThrows(NotRegisteredException.class, () -> {

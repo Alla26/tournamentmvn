@@ -7,7 +7,7 @@ public class Player {
 
     private int id;
     private String name;
-    private int strength;
+    private Integer strength;
 
     public int getId() {
         return id;
@@ -25,16 +25,16 @@ public class Player {
         this.name = name;
     }
 
-    public int getStrength() {
+    public Integer getStrength() {
         return strength;
     }
 
-    public void setStrength(int strength) {
+    public void setStrength(Integer strength) {
         this.strength = strength;
     }
 
 
-    public Player(int id, String name, int strength) {
+    public Player(int id, String name, Integer strength) {
         this.id = id;
         this.name = name;
         this.strength = strength;
